@@ -4,7 +4,11 @@
 # Delete a person
 # HINT: Show the list of options and allow the user to enter A for Add, S for Search and D for Delete
 
-  names = [Mark, Hamilton, Gavin]
+class Person
+  attr_accessor :name, :position, :phone_number, :address, :salary, :github, :slack
+end
+
+people = []
 
 ### METHODS
   def prompt
@@ -22,48 +26,60 @@
 
   def add_entry
 
+  end
 
+  def search_entry
 
+  end
 
+  def delete_entry
+
+  end
 
 
 ### PROMPT and LOOP beginning
   prompt
 
   if choice == "A"
-    ### ADD program
+    ### ADD   add_entry
+    person = Person.new
+
+    puts "What is their name?"
+    person.name = gets.chomp
+    puts "What is their phone number, (###)-###-####"
+    person.phone_number = gets.chomp
+    puts "What is their address?"
+    person.address = gets.chomp
+    puts "What is their position at The Ironyard?"
+    person.position = gets.chomp
+    puts "What is their salary?"
+    person.salary = gets.chomp
+    puts "What is their Slack username?"
+    person.slack = gets.chomp
+    puts "What is their GitHub username?"
+    person.github = gets.chomp
+
+    people << person
+    break
+
   elsif choice == "S"
-    ### SEARCH program
+    ##.... search_entry
+    break
+
   elsif choice == "D"
-    ### DELETE program
+    ##.... delete_entry
+    break
+
   else incorrect_entry
   break
   end
 
 
-### ADD   add_entry
-  puts "What is their name?"
-    name = gets.chomp
-  puts "What is their phone number, (###)-###-####"
-    phone = gets.chomp
-  puts "What is their address?"
-    address = gets.chomp
-  puts "What is their position at The Ironyard?"
-    position = gets.chomp
-  puts "What is their salary?"
-    salary = gets.chomp
-  puts "What is their Slack username?"
-    slack = gets.chomp
-  puts "What is their GitHub username?"
-    github = gets.chomp
-
-  names << name
-
-### SEARCH
+### SEARCH  search_entry
   puts "What is the first name of the person you want to search for?"
-    name = gets.chomp
+  name = gets.chomp
 
-  if names.include? name
+  if people.include? name
     puts
     puts "#{name}: "
     puts
@@ -81,12 +97,12 @@
 
 
 
-### DELETE
+### DELETE   delete_entry
   puts "What is the first name of the person you want to delete?"
     name = gets.chomp
 
   if names.include? name
-    names.delete(name)
+    person.delete(name)
 
   else
     puts "That person is not in our records."
